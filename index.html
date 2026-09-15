@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK 20</title>
+    <!-- css -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- bootstrap V-5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <main class="pt-5">
+        <div class="container d-flex flex-column align-items-center gap-5">
+            <h1 class="text-center text-warning fw-bold">Mobile Store</h1>
+
+            <form class="d-flex flex-column gap-3 w-50">
+                <input class="name form-control" type="text" placeholder="Mobile Name" />
+                <input class="price form-control" type="number" placeholder="Mobile Price" />
+                <button class="btn text-uppercase btn-warning fw-bold" onclick="createPhone()" type="submit">Submit</button>
+            </form>
+
+            <table class="table table-striped-columns">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- javascript -->
+    <script src="./main.js"></script>
+</body>
+
+</html>
