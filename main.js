@@ -1,4 +1,4 @@
-// selectors 
+git// selectors 
 
 const inputName = document.querySelector(".name")
 const inputPrice = document.querySelector(".price")
@@ -7,33 +7,36 @@ const form = document.querySelector("form")
 const table = document.querySelector("table")
 const tableBody = document.querySelector("table tbody")
 
+
+
 // vars 
 
-const phones = []
+const phones = JSON.parse(localStorage.getItem("phones")) || [] 
 
 // functions
 
 function createPhone() {
-    const phone = {
-        name: inputName.value,
-        price: +inputPrice.value
-    }
-    phones.push(phone)
+  const phone = {
+    name: inputName.value,
+    price: +inputPrice.value
+  }
+  phones.push(phone)
 
-    clearInputs()
-    showPhones()
-    console.log(phones)
+  localStorage.setItem("phones", JSON.stringify(phones))
+
+  clearInputs()
+  showPhones()
 }
 
 function clearInputs() {
-    inputName.value = ""
-    inputPrice.value = ""
+  inputName.value = ""
+  inputPrice.value = ""
 }
 
 function showPhones() {
-    tableBody.innerHTML = ""
-    phones.forEach((phone, i) => {
-        tableBody.innerHTML += `
+  tableBody.innerHTML = ""
+  phones.forEach((phone, i) => {
+    tableBody.innerHTML += `
             <tr>
                 <td>${i + 1}</td>
                 <td>${phone.name}</td>
@@ -56,32 +59,34 @@ function showPhones() {
                 </td>
             </tr>
         `
-    })
+  })
 }
 showPhones()
 
 function deletePhone(index) {
-    phones.splice(index, 1)
-    showPhones()
+  phones.splice(index, 1)
+  localStorage.setItem("phones", JSON.stringify(phones))
+  showPhones()
 }
 
 function editPhone(index) {
-    inputName.value = phones[index].name
-    inputPrice.value = phones[index].price
-    formBtn.innerText = "Edit"
-    formBtn.setAttribute("onclick", `updatePhone(${index})`)
+  inputName.value = phones[index].name
+  inputPrice.value = phones[index].price
+  formBtn.innerText = "Edit"
+  formBtn.setAttribute("onclick", `updatePhone(${index})`)
 }
 
 function updatePhone(index) {
-    phones[index].name = inputName.value
-    phones[index].price = +inputPrice.value
-    formBtn.innerText = "Submit"
-    formBtn.setAttribute("onclick", `createPhone()`)
-    showPhones()
-    clearInputs()
+  phones[index].name = inputName.value
+  phones[index].price = +inputPrice.value
+  formBtn.innerText = "Submit"
+  formBtn.setAttribute("onclick", `createPhone()`)
+  localStorage.setItem("phones", JSON.stringify(phones))
+  showPhones()
+  clearInputs()
 }
 
 // events 
 form.addEventListener("submit", (e) => {
-    e.preventDefault()
+  e.preventDefault()
 })
