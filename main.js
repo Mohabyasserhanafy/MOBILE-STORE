@@ -1,4 +1,4 @@
-git// selectors 
+// selectors 
 
 const inputName = document.querySelector(".name")
 const inputPrice = document.querySelector(".price")
